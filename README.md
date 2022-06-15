@@ -1,2 +1,2 @@
-# xastanford
-tools for Chi Alpha @ Stanford
+# Slack Bible
+posting a Bible reading plan to a Slack channel

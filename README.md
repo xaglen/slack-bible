@@ -6,7 +6,7 @@ The plan is very simple: Monday, Wednesday, and Friday are Old Testament reading
 
 The Old Testament ordering largely follows the Old Testament canon. This has the advantage of separating the books of Samuel and Kings from the books of Chronicles.
 
-The New Testament is ordered idiosyncractically so as to break up the gospels. Other New Testament writings connected to the gospel are read after it (for example, the epistles of John follow the gospel of John, the epistles of Peter follow the gospel of Mark, the letters of Paul follow Luke-Acts).
+The New Testament is ordered idiosyncractically so as to break up the gospels. Other New Testament writings connected to a given gospel are read after it (for example, the epistles of John follow the gospel of John, the epistles of Peter follow the gospel of Mark, the letters of Paul follow Luke-Acts).
 
 # To Use
 1) Create a Slack bot and add it to the channel you want Bible readings posted to. 

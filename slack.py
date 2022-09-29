@@ -84,7 +84,7 @@ else:
 #print (passage_string)
 #print(wisdom_passage_string)
 
-slack_message = "Today's Bible readings. MWF = OT, Tu&Th = NT, always one chapter from wisdom literature. See the schedule: <https://xastanford.org/prayer/bible/ot.csv|OT>, <https://xastanford.org/prayer/bible/nt.csv|NT>):\n* {}\n* {}".format(passage_string,wisdom_passage_string)
+slack_message = "Today's Bible readings. See the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {}\n* {}".format(passage_string,wisdom_passage_string)
 
 try: 
     resp=client.chat_postMessage(

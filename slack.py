@@ -38,18 +38,37 @@ day_of_week = date.today().weekday()
 
 #print(day_of_week)
 
-if day_of_week==0:
-    passage = old_testament[(3*weeks)%old_testament_entries]
-elif day_of_week==1:
-    passage = new_testament[(2*weeks)%new_testament_entries]
-elif day_of_week==2:
-    passage = old_testament[(3*weeks)%old_testament_entries+1]
-elif day_of_week==3:
-    passage = new_testament[(2*weeks)%new_testament_entries+1]
-elif day_of_week==4:
-    passage = old_testament[(3*weeks)%old_testament_entries+2]
-else:
-    sys.exit() # it's the weekend or there is an error
+ot_progress = 3*weeks # through the OT thrice as fast as if reading once a week
+nt_progress = 2*weeks # NT is twice as fast
+
+try:
+    if day_of_week==0:
+        passage = old_testament[ot_progress % old_testament_entries]
+    elif day_of_week==1:
+        passage = new_testament[nt_progress % new_testament_entries]
+    elif day_of_week==2:
+        ot_progress = ot_progress + 1
+        ot_index = ot_progress % old_testament_entries
+        passage = old_testament[ot_index]
+    elif day_of_week==3:
+#        print("Weeks: {weeks} NT entries: {nt}  result:{result}".format(weeks=weeks, nt=new_testament_entries, result=((2*weeks)%new_testament_entries)+1))
+# ERROR ALERT  = Thursday Oct 27 2022 weeks was 522 and the calculation resulted in 55 (54 should be the max for nt entries)
+# I need to redo this logic - maybe move the calculation outside the index and then modulus the result in the index?
+#        passage = new_testament[(2*weeks)%new_testament_entries+1]
+        nt_progress = nt_progress + 1
+        nt_index = nt_progress % new_testament_entries
+        passage = new_testament[nt_index]
+    elif day_of_week==4:
+        ot_progress = ot_progress + 2
+        ot_index = ot_progress % old_testament_entries
+        passage = old_testament[ot_index]
+    else:
+        sys.exit() # it's the weekend or there is a logic error
+except IndexError: #weird - just wrap around
+    if day_of_week in [0, 2, 4]:
+        passage=old_testament[0]
+    else:
+        passage=new_testament[0]
 #print(passage)
 
 passage_string = "Main reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(passage[0]),passage[0])
@@ -97,8 +116,8 @@ except SlackApiError as e:
     logger.info(message)
     logger.info(e)
     logger.info(e.response)
-#        print(message)
-#        print(e)
+#    print(message)
+#    print(e)
 except TypeError as e:
     message = "TypeError posting Bible reading: {}".format(repr(e))
     logger.info(message)

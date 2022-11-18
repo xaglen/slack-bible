@@ -71,7 +71,7 @@ except IndexError: #weird - just wrap around
         passage=new_testament[0]
 #print(passage)
 
-passage_string = "Main reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(passage[0]),passage[0])
+passage_string = "Main reading: <http://www.biblegateway.com/passage/?search={}&version=NIV|{}>".format(urllib.parse.quote(passage[0]),passage[0])
 #print(passage_string)
 
 wisdom_books = {'Psalms':150, 'Proverbs':31, 'Job':42, 'Song of Songs':8, 'Ecclesiastes':12, 'Lamentations':5}

@@ -8,6 +8,19 @@ The Old Testament ordering largely follows the Old Testament canon. This has the
 
 The New Testament is ordered idiosyncratically so as to break up the gospels. Other New Testament writings connected to a given gospel are read after it (for example, the epistles of John follow the gospel of John, the epistles of Peter follow the gospel of Mark, the letters of Paul follow Luke-Acts).
 
+# The Rhythym Of Reading
+*tl;dr: this plan takes you through the Old Testament annually and the New Testament twice per year.*
+
+It's a little more complicated than that. In this plan we read the Old Testament 3 times a week, meaning 156 OT readings per fifty-two weeks. There are 155 separate OT readings, so we read through the Old Testament slightly more than once per year (excluding the wisdom literature). The actual annual rate is just a smidge faster because fifty-two weeks is only 364 days, so every other year there is one additional Old Testament reading.
+
+We read the New Testament 2 times per week, meaning 104 NT readings per fifty-two weeks. Since there are only 55 New Testament readings, we read through the New Testament roughly twice per year. 
+
+We also read a chapter from the wisdom literature each day (five times per week), which works out to 260 readings per year. Given that there are 248 chapters in the wisdom literature (as defined by me), we read through the wisdom literature a little more than once per year.
+
+You will note that these patterns do not sync up. This is a conscious choice so that every time I read the Bible things are juxtaposed in a new way. 
+
+Saturdays are set aside as a catch-up day in case you missed one due to travel or some other constraint, and Sunday is left free since you'll be exposed to the Word at church that morning.
+
 # To Use
 1) Create a Slack bot and add it to the channel you want Bible readings posted to. 
 2) Copy settings.example.py to settings.py and insert the correct values for your bot's slack token and the channel to post to

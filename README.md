@@ -8,7 +8,7 @@ The Old Testament ordering largely follows the Old Testament canon. This has the
 
 The New Testament is ordered idiosyncratically so as to break up the gospels. Other New Testament writings connected to a given gospel are read after it (for example, the epistles of John follow the gospel of John, the epistles of Peter follow the gospel of Mark, the letters of Paul follow Luke-Acts).
 
-# The Rhythym Of Reading
+# The Rhythm Of Reading
 *tl;dr: this plan takes you through the Old Testament annually and the New Testament twice per year.*
 
 It's a little more complicated than that. In this plan we read the Old Testament 3 times a week, meaning 156 OT readings per fifty-two weeks. There are 155 separate OT readings, so we read through the Old Testament slightly more than once per year (excluding the wisdom literature). The actual annual rate is just a smidge faster because fifty-two weeks is only 364 days, so every other year there is one additional Old Testament reading.

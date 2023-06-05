@@ -88,32 +88,17 @@ wisdom_passage=wisdom[wisdom_progress][0]
 print("Wisdom passage {}".format(wisdom_passage))
 wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
 
-#if progress<=150:
-#    wisdom_passage = "Psalm {}".format(progress)
-#elif progress<=181:
-#    wisdom_passage = "Proverbs {}".format(progress-150)
-#elif progress<=223:
-#    wisdom_passage = "Job {}".format(progress-181)
-#elif progress<=231:
-#    wisdom_passage = "Song of Songs {}".format(progress-223)
-#elif progress<=243:
-#    wisdom_passage = "Ecclesiastes {}".format(progress-231)
-#elif progress<=248:
-#    wisdom_passage = "Lamentations {}".format(progress-243)
-#else:
-#    wisdom_passage =""
-
 if day_of_week==5 or day_of_week==6:
     wisdom_passage_string=""
 else:
     wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
 
-print (passage_string)
-print(wisdom_passage_string)
+#print (passage_string)
+#print(wisdom_passage_string)
 
 slack_message = "Today's Bible readings. See the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {}\n* {}".format(passage_string,wisdom_passage_string)
-exit()
-try: 
+
+try:
     resp=client.chat_postMessage(
         channel=settings.SLACK_CHANNEL,
         text=slack_message

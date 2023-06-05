@@ -75,7 +75,7 @@ passage_string = "Main reading: <http://www.biblegateway.com/passage/?search={}&
 #print(passage_string)
 
 with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/wisdom.csv', newline='') as csvfile:
-    wisdom = list(csv.reader(csvfile, quoting.csv.QUOTE_NONE))
+    wisdom = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
     wisdom_entries = sum(1 for row in wisdom)
     csvfile.close()
 

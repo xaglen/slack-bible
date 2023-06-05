@@ -83,7 +83,7 @@ with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/wisdom.csv', newli
 #wisdom_chapters=sum(wisdom_books.values())
 
 wisdom_progress=(weeks*5+day_of_week) % wisdom_entries
-print("Wisdom progress {}".format(wisdom_progress)
+print("Wisdom progress {}".format(wisdom_progress))
 wisdom_passage=wisdom[wisdom_progress]
 print("Wisdom passage "+wisdom_passage)
 wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)

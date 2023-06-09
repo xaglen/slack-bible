@@ -153,11 +153,11 @@ else:
 
 slack_message = "Today's Bible readings. See the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {}\n* {}".format(passage_string,wisdom_passage_string)
 
-passages = passage.split(";")
+passages = passage[0].split(";")
 total_wordcount = 0
 
-for passage in passages:
-    total_wordcount += words_by_reference(passage[0])
+for section in passages:
+    total_wordcount += words_by_reference(section)
 
 total_wordcount += words_by_reference(wisdom_passage)
 

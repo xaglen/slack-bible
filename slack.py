@@ -19,6 +19,7 @@ logger.setLevel(logging.INFO)
 
 
 def words_by_reference(passage):
+    print(f"Parameter pasage: {passage}")
     wordcount = 0
     passage_book = passage.split()[0]
     passage_chapters = passage.split()[1]

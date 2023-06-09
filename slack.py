@@ -63,7 +63,7 @@ def words_by_reference(passage):
 
 def reading_time(word_count=0):
     minutes, seconds = divmod(word_count / 265 * 60, 60)
-    return f"Estimated read time: {minutes} minutes, {seconds} seconds ({word_count} words)"
+    return f"*Estimated read time: {minutes} minutes, {round(seconds)} seconds ({word_count} words)*"
 
 #reference = "Luke 1 -4; Proverbs 22"
 
@@ -163,7 +163,7 @@ total_wordcount += words_by_reference(wisdom_passage)
 
 time_string = reading_time(total_wordcount)
 
-slack_message += time_string
+slack_message += "\n\n" + time_string
 
 try:
     resp=client.chat_postMessage(

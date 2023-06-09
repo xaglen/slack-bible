@@ -63,7 +63,7 @@ def words_by_reference(passage):
 
 def reading_time(word_count=0):
     minutes, seconds = divmod(word_count / 265 * 60, 60)
-    return f"*Estimated read time: {minutes} minutes, {round(seconds)} seconds ({word_count} words)*"
+    return f"*Estimated read time: {round(minutes)} minutes, {round(seconds)} seconds (~{word_count} words)*"
 
 #reference = "Luke 1 -4; Proverbs 22"
 
@@ -151,8 +151,6 @@ else:
 #print (passage_string)
 #print(wisdom_passage_string)
 
-slack_message = "Today's Bible readings. See the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {}\n* {}".format(passage_string,wisdom_passage_string)
-
 passages = passage[0].split(";")
 total_wordcount = 0
 
@@ -163,7 +161,7 @@ total_wordcount += words_by_reference(wisdom_passage)
 
 time_string = reading_time(total_wordcount)
 
-slack_message += "\n\n" + time_string
+slack_message = f"Today's Bible readings. {time_string}\n\nSee the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {passage_string}\n* {wisdom_passage_string}"
 
 try:
     resp=client.chat_postMessage(

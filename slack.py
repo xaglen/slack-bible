@@ -17,6 +17,60 @@ logger = logging.getLogger(__name__)
 #logger.addHandler(journald_handler)
 logger.setLevel(logging.INFO)
 
+
+def words_by_reference(passage):
+    wordcount = 0
+    passage_book = passage.split()[0]
+    passage_chapters = passage.split()[1]
+    if passage_chapters.isdigit():
+        chapter = int(passage_chapters)
+        passage_chapters = []
+        passage_chapters.append(chapter)
+    else:
+        [opening_chapter, ending_chapter] = passage_chapters.split('-')
+        passage_chapters = list(range(int(opening_chapter), int(ending_chapter)+1))
+
+    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/books.csv', newline='') as csvfile:
+        data = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
+        books = {}
+        book_chapters = []
+        book_chapters.append(0)
+        for row in data:
+            #print(row)
+            if row[0].isdigit():
+                book_id = int(row[0])
+                book_name = row[2]
+                chapter_count = int(row[3])
+                books[book_name]=book_id
+                book_chapters.append(chapter_count)
+        csvfile.close()
+
+    print("Chapters in " + passage_book + ": "+str(books[passage_book]))
+
+    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/chapters.csv', newline='') as csvfile:
+        chapter_data = [i for i in range(1,67)]
+        for chapter in chapter_data:
+            chapter = []
+
+        data = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
+        for row in data:
+            if row[0].isdigit() and int(row[0])==books[passage_book] and int(row[1]) in passage_chapters:
+                wordcount+=int(row[3])
+        csvfile.close()
+
+    return wordcount
+
+def reading_time(word_count=0):
+    minutes, seconds = divmod(word_count / 265 * 60, 60)
+    return f"Estimated read time: {minutes} minutes, {seconds} seconds ({word_count} words)"
+
+#reference = "Luke 1 -4; Proverbs 22"
+
+#passages = reference.split(";")
+
+#for passage in passages:
+#    print(words_by_reference(passage))
+
 client = WebClient(token=settings.SLACK_TOKEN)
 
 start = date(2012, 10, 22)
@@ -71,7 +125,7 @@ except IndexError: #weird - just wrap around
         passage=new_testament[0]
 #print(passage)
 
-passage_string = "Main reading: <http://www.biblegateway.com/passage/?search={}&version=NIV|{}>".format(urllib.parse.quote(passage[0]),passage[0])
+passage_string = f"Main reading: <http://www.biblegateway.com/passage/?search={urllib.parse.quote(passage[0])}&version=NIV|{passage[0]}>"
 #print(passage_string)
 
 with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/wisdom.csv', newline='') as csvfile:
@@ -97,6 +151,18 @@ else:
 #print(wisdom_passage_string)
 
 slack_message = "Today's Bible readings. See the schedule: <https://github.com/xaglen/slack_bible|GitHub>:\n* {}\n* {}".format(passage_string,wisdom_passage_string)
+
+passages = passage.split(";")
+total_wordcount = 0
+
+for passage in passages:
+    total_wordcount += words_by_reference(passage)
+
+total_wordcount += words_by_reference(wisdom_passage)
+
+time_string = reading_time(total_wordcount)
+
+slack_message += time_string
 
 try:
     resp=client.chat_postMessage(

@@ -156,7 +156,7 @@ passages = passage[0].split(";")
 total_wordcount = 0
 
 for passage in passages:
-    total_wordcount += words_by_reference(passage)
+    total_wordcount += words_by_reference(passage[0])
 
 total_wordcount += words_by_reference(wisdom_passage)
 

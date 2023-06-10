@@ -72,13 +72,18 @@ def reading_time(word_count=0):
 #for passage in passages:
 #    print(words_by_reference(passage))
 
+if settings.DEBUG:
+    print ("Starting script")
+
 client = WebClient(token=settings.SLACK_TOKEN)
 
 start = date(2012, 10, 22)
 today = date.today()
 weeks = (today-start).days//7
 
-#print(weeks)
+if settings.DEBUG:
+    print(f"Weeks {weeks}")
+
 with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/nt.csv', newline='') as csvfile:
     new_testament = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
     new_testament_entries = sum(1 for row in new_testament)
@@ -91,7 +96,8 @@ with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/ot.csv', newline='
 
 day_of_week = date.today().weekday()
 
-#print(day_of_week)
+if settings.DEBUG:
+    print(f"Day of week: {day_of_week}")
 
 ot_progress = 3*weeks # through the OT thrice as fast as if reading once a week
 nt_progress = 2*weeks # NT is twice as fast
@@ -118,6 +124,8 @@ try:
         ot_index = ot_progress % old_testament_entries
         passage = old_testament[ot_index]
     else:
+        if settings.DEBUG:
+            print("Exiting scipt")
         sys.exit() # it's the weekend or there is a logic error
 except IndexError: #weird - just wrap around
     if day_of_week in [0, 2, 4]:

@@ -133,7 +133,9 @@ except IndexError: #weird - just wrap around
         passage=old_testament[0]
     else:
         passage=new_testament[0]
-#print(passage)
+
+if settings.DEBUG:
+    print(f"Passage: {passage}")
 
 passage_string = f"Main reading: <http://www.biblegateway.com/passage/?search={urllib.parse.quote(passage[0])}&version=NIV|{passage[0]}>"
 #print(passage_string)

@@ -62,8 +62,9 @@ def words_by_reference(passage):
     return wordcount
 
 def reading_time(word_count=0):
-    minutes, seconds = divmod(word_count / 265 * 60, 60)
-    return f"*Estimated read time: {round(minutes)} minutes, {round(seconds)} seconds (~{word_count} words)*"
+    words_per_minute = 300 # 256 in original
+    minutes, seconds = divmod(word_count / words_per_minute * 60, 60)
+    return f"*Estimated read time: {round(minutes)} minutes (~{word_count} words)*"
 
 #reference = "Luke 1 -4; Proverbs 22"
 

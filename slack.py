@@ -21,8 +21,8 @@ logger.setLevel(logging.INFO)
 def words_by_reference(passage):
     print(f"Parameter pasage: {passage}")
     wordcount = 0
-    passage_book = passage.split()[0]
-    passage_chapters = passage.split()[1]
+    passage_book = passage.rsplit(' ', 1)[0]
+    passage_chapters = passage.split()[-1]
     if passage_chapters.isdigit():
         chapter = int(passage_chapters)
         passage_chapters = []

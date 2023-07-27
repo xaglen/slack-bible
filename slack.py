@@ -46,7 +46,10 @@ def words_by_reference(passage):
                 book_chapters.append(chapter_count)
         csvfile.close()
 
-    print("Chapters in " + passage_book + ": "+str(books[passage_book]))
+    try:
+        print("Chapters in " + passage_book + ": "+str(books[passage_book])+".")
+    except KeyError:
+        print("KeyError for books[passage_book] where passage_book is "+passage_book+".")
 
     with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/chapters.csv', newline='') as csvfile:
         chapter_data = [i for i in range(1,67)]
@@ -166,9 +169,9 @@ passages = passage[0].split(";")
 total_wordcount = 0
 
 for section in passages:
-    total_wordcount += words_by_reference(section)
+    total_wordcount += words_by_reference(section.strip())
+total_wordcount += words_by_reference(wisdom_passage.strip())
 
-total_wordcount += words_by_reference(wisdom_passage)
 
 time_string = reading_time(total_wordcount)
 

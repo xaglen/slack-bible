@@ -28,8 +28,11 @@ def words_by_reference(passage):
         passage_chapters = []
         passage_chapters.append(chapter)
     else:
-        [opening_chapter, ending_chapter] = passage_chapters.split('-')
-        passage_chapters = list(range(int(opening_chapter), int(ending_chapter)+1))
+        try:
+            [opening_chapter, ending_chapter] = passage_chapters.split('-')
+            passage_chapters = list(range(int(opening_chapter), int(ending_chapter)+1))
+        except ValueError: # is not a digit, must be blank like Philemon or Jude
+            passage_chapters = [1] # so assign chapter 1
 
     with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/books.csv', newline='') as csvfile:
         data = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))

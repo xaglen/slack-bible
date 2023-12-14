@@ -158,12 +158,12 @@ wisdom_progress=(weeks*5+day_of_week) % wisdom_entries
 print("Wisdom progress {}".format(wisdom_progress))
 wisdom_passage=wisdom[wisdom_progress][0]
 print("Wisdom passage {}".format(wisdom_passage))
-wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
+wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
 
 if day_of_week==5 or day_of_week==6:
     wisdom_passage_string=""
 else:
-    wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV'|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
+    wisdom_passage_string = "Wisdom reading: <http://www.biblegateway.com/passage/?search={}&version=NIV|{}>".format(urllib.parse.quote(wisdom_passage),wisdom_passage)
 
 #print (passage_string)
 #print(wisdom_passage_string)

@@ -34,7 +34,7 @@ def words_by_reference(passage):
         except ValueError: # is not a digit, must be blank like Philemon or Jude
             passage_chapters = [1] # so assign chapter 1
 
-    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/books.csv', newline='') as csvfile:
+    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/books.csv', newline='', encoding='utf-8-sig') as csvfile:
         data = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
         books = {}
         book_chapters = []
@@ -54,7 +54,7 @@ def words_by_reference(passage):
     except KeyError:
         print("KeyError for books[passage_book] where passage_book is "+passage_book+".")
 
-    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/chapters.csv', newline='') as csvfile:
+    with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/chapters.csv', newline='',  encoding='utf-8-sig') as csvfile:
         chapter_data = [i for i in range(1,67)]
         for chapter in chapter_data:
             chapter = []
@@ -91,12 +91,12 @@ weeks = (today-start).days//7
 if settings.DEBUG:
     print(f"Weeks {weeks}")
 
-with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/nt.csv', newline='') as csvfile:
+with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/nt.csv', newline='', encoding='utf-8-sig') as csvfile:
     new_testament = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
     new_testament_entries = sum(1 for row in new_testament)
     csvfile.close()
 
-with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/ot.csv', newline='') as csvfile:
+with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/ot.csv', newline='', encoding='utf-8-sig') as csvfile:
     old_testament = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
     old_testament_entries = sum(1 for row in old_testament)
     csvfile.close()
@@ -146,7 +146,7 @@ if settings.DEBUG:
 passage_string = f"Main reading: <http://www.biblegateway.com/passage/?search={urllib.parse.quote(passage[0])}&version=NIV|{passage[0]}>"
 #print(passage_string)
 
-with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/wisdom.csv', newline='') as csvfile:
+with open('/www/vhosts/xastanford.org/wsgi/xadb/scripts/bible/wisdom.csv', newline='', encoding='utf-8-sig') as csvfile:
     wisdom = list(csv.reader(csvfile, quoting=csv.QUOTE_NONE))
     wisdom_entries = sum(1 for row in wisdom)
     csvfile.close()

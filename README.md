@@ -13,7 +13,7 @@ The New Testament is ordered idiosyncratically so as to break up the gospels. Ot
 
 It's a little more complicated than that. In this plan we read the Old Testament 3 times a week, meaning 156 OT readings per fifty-two weeks. There are 126 separate OT readings, so we read through the Old Testament about 1.2 times per year (excluding the wisdom literature).
 
-We read the New Testament 2 times per week, meaning 104 NT readings per fifty-two weeks. Since there are only 55 New Testament readings, we read through the New Testament roughly twice per year. 
+We read the New Testament 2 times per week, meaning 104 NT readings per fifty-two weeks. Since there are only 55 New Testament readings, we read through the New Testament roughly twice per year (1.9 times). 
 
 We also read a chapter from the wisdom literature each day (five times per week), which works out to 260 readings per year. Given that there are 248 chapters in the wisdom literature (as defined by me), we read through the wisdom literature a little more than once per year.
 

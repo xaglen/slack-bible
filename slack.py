@@ -68,8 +68,10 @@ def words_by_reference(passage):
     return wordcount
 
 def reading_time(word_count=0):
-    words_per_minute = 300 # 256 in original
-    minutes, seconds = divmod(word_count / words_per_minute * 60, 60)
+    words_per_minute = 450 # 256 in original
+    minutes, seconds = divmod(60 * word_count / words_per_minute, 60)
+    #multiply by 60 since I then divmod by 60. Since I don't really care about seconds anymore
+    #I could just do minutes = word_count / words_per_minute and get the same result
     return f"*Estimated read time: {round(minutes)} minutes (~{word_count} words)*"
 
 #reference = "Luke 1 -4; Proverbs 22"
@@ -183,7 +185,8 @@ slack_message = f"Today's Bible readings. {time_string}\n\nSee the schedule: <ht
 try:
     resp=client.chat_postMessage(
         channel=settings.SLACK_CHANNEL,
-        text=slack_message
+        text=slack_message,
+        unfurl_links=False,
     )
 except SlackApiError as e:
     # You will get a SlackApiError if "ok" is False
@@ -191,14 +194,14 @@ except SlackApiError as e:
     logger.info(message)
     logger.info(e)
     logger.info(e.response)
-#    print(message)
-#    print(e)
+    print(message)
+    print(e)
 except TypeError as e:
     message = "TypeError posting Bible reading: {}".format(repr(e))
     logger.info(message)
-#    print(message+": "+repr(e))
+    print(message+": "+repr(e))
 except:
     e = repr(sys.exc_info()[0])
     message = "Error posting Bible reading: {}".format(e)
     logger.info(message)
-#    print(message+": "+e)
+    print(message+": "+e)
